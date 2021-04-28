@@ -35,7 +35,20 @@
       <button class="btn btn--roll">🎲 ROLL DICE</button>
       <button class="btn btn--hold">📥 HOLD</button>
     </main>
-
+    <button class="btn btn-show-modal">How to play</button>
+    <div class="modal hidden">
+      <button class="close-modal">x</button>
+      <h1>How to play</h1>
+      <p>
+        1 - Choose between Player 1 or Player 2 <br />
+        2 - Click on "ROLL DICE" to add points <br />
+        3 - If dice scores 1, your current score will be reset<br />
+        4 - To add the current score to main score, click on "HOLD"<br />
+        5 - The player that scores 100 points, will be the winner<br />
+        6 - To play again, click on "NEW GAME"
+      </p>
+    </div>
+    <div class="overlay hidden"></div>
     <script src="script.js"></script>
   </body>
 </html>
