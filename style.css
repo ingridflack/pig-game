@@ -14,19 +14,19 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  padding: 0px 15px;
 }
 
 main {
   position: relative;
   display: flex;
-  width: 100rem;
+  max-width: 100rem;
   height: 60rem;
   background-color: rgba(255, 255, 255, 0.35);
   backdrop-filter: blur(200px);
   filter: blur();
   box-shadow: 0 3rem 5rem rgb(0 0 0 / 25%);
   border-radius: 9px;
-  overflow: hidden;
 }
 .player {
   display: flex;
@@ -35,6 +35,12 @@ main {
   flex-direction: column;
   align-items: center;
   transition: all 0.75s;
+}
+.player:first-child {
+  border-radius: 9px 0 0 9px;
+}
+.player:last-child {
+  border-radius: 0 9px 9px 0;
 }
 
 .player--active {
@@ -79,8 +85,8 @@ main {
 }
 
 .dice {
-  width: 100px;
-  height: 100px;
+  width: 10rem;
+  height: 10rem;
   position: absolute;
   left: 50%;
   top: 16.5rem;
@@ -128,6 +134,10 @@ main {
 
 .btn--hold {
   top: 46.1rem;
+}
+
+.btn-show-modal {
+  top: 50%;
 }
 
 .btn-active {
@@ -195,4 +205,102 @@ p {
   background-color: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(3px);
   z-index: 5;
+}
+
+/* mobile */
+
+@keyframes blink {
+  0% {
+    background-color: rgba(255, 255, 255, 0.4);
+  }
+  50% {
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+  100% {
+    background-color: rgba(255, 255, 255, 0.4);
+  }
+}
+
+@keyframes playerNameBlink {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 700px) {
+  .player {
+    padding-top: 4rem;
+  }
+  .player.player--active {
+    animation: blink 600ms ease-in-out;
+  }
+  .player.player--active .name {
+    animation: playerNameBlink 600ms ease-in-out;
+  }
+
+  .player:first-of-type,
+  .player:last-of-type {
+    border-radius: 9px;
+  }
+
+  .dice {
+    top: 23rem;
+  }
+
+  .player:not(.player--active) {
+    display: none;
+  }
+  html {
+    font-size: 8px;
+  }
+
+  .btn {
+    transform: none;
+  }
+
+  .btn--roll,
+  .btn--hold {
+    top: auto;
+    bottom: 2rem;
+  }
+
+  .btn--new,
+  .btn-show-modal {
+    top: -6rem;
+  }
+
+  .btn--new {
+    left: 0;
+  }
+
+  .btn-show-modal {
+    left: auto;
+    right: 0;
+  }
+
+  .btn--roll {
+    left: 2rem;
+  }
+
+  .btn--hold {
+    left: auto;
+    right: 2rem;
+  }
+
+  .btn:active {
+    transform: translate(0, 3px);
+  }
+  p {
+    font-size: 14px;
+  }
+  .modal {
+    width: 80%;
+    padding: 6rem 4rem;
+  }
 }
